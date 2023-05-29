@@ -41,6 +41,7 @@ export default async function (params: Options): Promise<string> {
     owner: params.owner,
     repo: params.repo,
   }
+  console.log(`sandlog: params: ${JSON.stringify(params)}`)
   let headRepo = params.pushTo == null ? baseRepo : params.pushTo
   const filePath = params.filePath
   const api = params.apiClient.rest
@@ -73,7 +74,7 @@ export default async function (params: Options): Promise<string> {
       repo: baseRepo.repo,
     }
   }
-
+  console.log(`sandlog: makeFork: ${makeFork}, needsBranch: ${needsBranch}, inFork: ${inFork}`)
   if (needsBranch) {
     const timestamp = Math.round(Date.now() / 1000)
     headBranch = `update-${basename(filePath)}-${timestamp}`
