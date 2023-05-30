@@ -19,6 +19,7 @@ export function replaceFields(
   oldContent: string,
   replacements: Map<string, string>
 ): string {
+  console.log(`sandlog: replaceFields oldContent ${oldContent}`)
   let newContent = oldContent
   for (const [field, value] of replacements) {
     newContent = newContent.replace(
@@ -41,5 +42,6 @@ export function replaceFields(
 }
 
 export function removeRevisionLine(oldContent: string): string {
+  console.log(`sandlog: removeRevisionLine oldContent ${oldContent}`)
   return oldContent.replace(/^[ \t]*revision \d+ *\r?\n/m, '')
 }

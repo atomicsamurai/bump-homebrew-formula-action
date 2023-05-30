@@ -103,7 +103,9 @@ export async function prepareEdit(
   replacements.set('version', version)
   replacements.set('url', downloadUrl)
   if (downloadUrl.endsWith('.git')) {
+    console.log(`sandlog: git URL`)
     replacements.set('tag', tagName)
+    console.log(`sandlog: replacements ${replacements}`)
     replacements.set(
       'revision',
       await (async () => {
@@ -117,6 +119,7 @@ export async function prepareEdit(
         }
       })()
     )
+    console.log(`sandlog: replacements ${replacements}`)
   } else {
     replacements.set(
       'sha256',
@@ -124,7 +127,7 @@ export async function prepareEdit(
         (await calculateDownloadChecksum(sameRepoClient, downloadUrl, 'sha256'))
     )
   }
-
+  console.log(`sandlog: final replacements ${replacements}`)
   const commitMessage = commitForRelease(messageTemplate, {
     formulaName,
     version,
