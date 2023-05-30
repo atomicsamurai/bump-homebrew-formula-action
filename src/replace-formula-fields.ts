@@ -22,6 +22,7 @@ export function replaceFields(
   console.log(`sandlog: replaceFields oldContent ${oldContent}`)
   let newContent = oldContent
   for (const [field, value] of replacements) {
+    console.log(`sandlog: replaceFields field:${field}, value:${value}`)
     newContent = newContent.replace(
       new RegExp(`^(\\s*)${field}((?::| *=>)? *)(['"])([^'"]+)\\3`, 'm'),
       (
