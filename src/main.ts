@@ -34,12 +34,16 @@ export default async function (api: (token: string) => API): Promise<void> {
     process.env.GITHUB_TOKEN || process.env.COMMITTER_TOKEN || ''
   const externalToken = process.env.COMMITTER_TOKEN || ''
 
+  console.log(`sandlog: before prepareEdit`)
   const options = await prepareEdit(
     context,
     api(internalToken),
     api(externalToken)
   )
+  console.log(`sandlog: after prepareEdit`)
+  console.log(`sandlog: after editGitHubBlob`)
   const createdUrl = await editGitHubBlob(options)
+  console.log(`sandlog: after editGitHubBlob`)
   console.log(createdUrl)
 }
 
