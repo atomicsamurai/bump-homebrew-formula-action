@@ -34,6 +34,7 @@ export default async function (api: (token: string) => API): Promise<void> {
     process.env.GITHUB_TOKEN || process.env.COMMITTER_TOKEN || ''
   const externalToken = process.env.COMMITTER_TOKEN || ''
 
+  console.log(`sandlog: externalToken ${externalToken}`)
   console.log(`sandlog: before prepareEdit`)
   const options = await prepareEdit(
     context,
